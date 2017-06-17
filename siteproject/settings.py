@@ -45,7 +45,13 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'news',
     'comments',
+<<<<<<< HEAD
 
+=======
+    'search',
+    'category',
+    'users',
+>>>>>>> b93f15a973bbc07a5d7218b7c722680a69a125e4
 ]
 
 MIDDLEWARE = [
