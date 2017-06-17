@@ -1,11 +1,7 @@
 # coding=utf-8
 from __future__ import unicode_literals
-
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
-
-
-# Create your models here.
 from category.models import Category
 from users.models import Users
 
@@ -22,7 +18,7 @@ class News(models.Model):
     news_text = RichTextUploadingField(verbose_name='Текст новости', null=True)
     news_anons = models.TextField(verbose_name='Анонс новости', null=True)
     news_author = models.ForeignKey(Users)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, null=True, blank=True, default=None)
     is_public = models.BooleanField(default=False, verbose_name='Опубликовать')
 
     def __str__(self):

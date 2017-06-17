@@ -16,4 +16,4 @@ class Users(models.Model):
     users_city = models.CharField(max_length=255, verbose_name='Ваш город', null=True)
 
     def __str__(self):
-        return self.users_user.first_name
+        return self.users_user.username
