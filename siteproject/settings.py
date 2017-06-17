@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'news',
     'comments',
     'search',
+    'category',
+    'users',
 ]
 
 MIDDLEWARE = [

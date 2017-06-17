@@ -11,7 +11,7 @@ class Category(models.Model):
         verbose_name = 'Категорий'
         verbose_name_plural = 'Категории'
 
-    category_title = models.CharField(max_length=500, verbose_name='', null=True)
+    category_title = models.CharField(max_length=500, verbose_name='Категории новойтей', null=True)
     category_slug = models.SlugField(unique=True)
 
     def __str__(self):

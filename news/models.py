@@ -7,6 +7,7 @@ from django.db import models
 
 # Create your models here.
 from category.models import Category
+from users.models import Users
 
 
 class News(models.Model):
@@ -20,7 +21,7 @@ class News(models.Model):
     news_date_update = models.DateTimeField(auto_now=True, verbose_name='Дата обгавлении', null=True)
     news_text = RichTextUploadingField(verbose_name='Текст новости', null=True)
     news_anons = models.TextField(verbose_name='Анонс новости', null=True)
-    # news_author = models.ForeignKey(Users)
+    news_author = models.ForeignKey(Users)
     category = models.ForeignKey(Category)
     is_public = models.BooleanField(default=False, verbose_name='Опубликовать')
 
