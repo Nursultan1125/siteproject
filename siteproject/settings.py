@@ -41,14 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'ckeditor',
     'ckeditor_uploader',
     'news',
-=======
-
     'comments',
->>>>>>> 2e2d74bb7bb9308ecb8989c606fb885f421ac028
+    'search',
 ]
 
 MIDDLEWARE = [
