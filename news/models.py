@@ -27,5 +27,5 @@ class News(models.Model):
         return self.news_title
 
     def get_comments(self):
-        from comments.model import Comments
+        from comments.models import Comments
         return Comments.object.filter(news=self)
