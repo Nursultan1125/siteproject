@@ -1,0 +1,94 @@
+html, body{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	font-family:  Helvetica;
+
+}
+
+.post-title{
+	padding: 10px 10px 10px 10px;
+}
+
+p{
+	font-size: 15px;
+	color: black;
+}
+.logo{
+	color: #fff;
+}
+
+
+
+.navbar{
+	margin-bottom: 0;
+}
+
+.jumbotron{
+	background:#428BCA;
+	color: #fff;
+	padding: 20px 0;
+}
+
+
+
+
+
+
+
+
+.post{
+	padding-bottom: 40px;
+	border-bottom: 1px solid #999;
+}
+
+.post.post-title a{
+	color: #333;
+
+
+}
+
+.post.thumb{
+	margin-right: 10px;
+	width: 40%;
+
+}
+
+.post.thumb img{
+	width: 50%;
+}
+
+.post.contenedor-botones{
+	width: 100%;
+	background-color: red;
+}
+.registr{
+	
+	list-style: none;
+	text-decoration: none;
+	color: #fff;
+	}
+
+
+
+@media screen and (max-width: 768px){
+	.post.thumb{
+	width: 100px;
+	margin-bottom:20px;
+	margin-right: 0;
+
+	}
+
+}
+
+
+
+
+
+
+
+
+

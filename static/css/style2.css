@@ -1,0 +1,44 @@
+.container{
+    max-width: 1170px;
+	margin: auto}
+.form-horizontal{
+	padding: 20px 0;
+	margin: 25px 200px;
+
+}
+
+.registr-form{
+	text-align: center;
+}
+
+
+footer{
+	background: #000;
+	height: 300px;
+}
+.thema{
+	padding:  10px 5px;
+	background: black;
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+}
+.post-black{
+	width: 20px
+	height: 30px;
+	background: skyblue;
+}
+.media{
+	
+	margin-right:350px;
+	background-color: #ddd;
+}
+.body{
+	padding-top: 15px;
+}
+
+
+
+
+
+
