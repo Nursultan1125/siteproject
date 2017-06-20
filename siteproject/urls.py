@@ -16,16 +16,25 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-
 from siteproject import settings
+from news import views as news_views
+from news import urls as news_urls
+from category import urls as category_urls
+from search import urls as search_urls
 
 urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^news/', include(news_urls, namespace="news")),
+    url(r'^category/', include(category_urls, namespace='category')),
+    url(r'^search/', include(search_urls, namespace='search')),
+    url(r'^page/(\d+)/$', news_views.index),
+    url(r'^$', news_views.index, name="index"),
 
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # urlpatterns += staticfiles_urlpatterns()

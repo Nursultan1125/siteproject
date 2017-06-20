@@ -45,13 +45,10 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'news',
     'comments',
-<<<<<<< HEAD
-
-=======
     'search',
     'category',
     'users',
->>>>>>> b93f15a973bbc07a5d7218b7c722680a69a125e4
+
 ]
 
 MIDDLEWARE = [
@@ -139,9 +136,9 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(os.path.dirname(_PATH), 'static', 'static_root')
 
-STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(BASE_DIR), 'siteproject', 'templates', 'public'),
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = 'Pillow'
 

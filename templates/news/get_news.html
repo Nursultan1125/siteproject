@@ -1,0 +1,74 @@
+{% extends 'about.html' %}
+{% block title %}
+    {{ news.news_title }}
+{% endblock %}
+{% block logo_block %}
+{% endblock %}
+{% block content %}
+<section class="main">
+	<div class="container">
+		<div class="row">
+			<section class="post col-md-9">
+				<article class="post clearfix">
+
+                        <div class="container">
+						<img class="img-thumbnail" src="{{ news.news_image.url }}" style="margin: 20px; max-width: 800px;">
+                         </div>
+						<h2 class="post-title">
+						<br><br>
+							{{ news.news_title }}
+						</h2>
+						<p>
+                            <span class="post-fecha"> {{ new.news_date_create|date:"d-N Y-жыл"}}</span>
+                            <span class="post-autor"><a href="#">{{ news.news_author }}</a></span></p>
+					<br>
+					<p class="post-content text-justify">
+                        {{ news.news_text|safe }}
+                    </p>
+				</article>
+		<hr>
+				</nav>
+				</section>
+        {% if news_titles %}
+				<aside class="col-md-3 hidden-xs hidden-sm">
+		<div class="thema"><h4>Тема боюнча :</h4></div>
+
+                    {% for new_t in news_titles %}
+		<div class="list-group">
+			<a href="{% url 'news:get_news' new_t.id %}" class="list-group-item"><b>{{ new_t.news_title }}</b>
+                <img src="{{ new_t.news_image.url }}" width="200" alt="">
+            </a>
+
+		</div>
+                    {% endfor %}
+                </aside>
+            {% else %}
+                     <aside class="col-md-3 hidden-xs hidden-sm">
+                    {% for category in categorys %}
+                        <a href="{% url "category:get_category" category.category_slug %}">
+                            <h4>{{ category.category_title }}</h4>
+                        </a>
+                        <div class="list-group">
+
+                            {% for new in category.get_news %}
+                                {% if new != news %}
+                                {% if new == category.get_news.first %}
+                                    <a href="{% url "news:get_news" new.id%}" class="list-group-item active">
+                                        {{ category.get_news.first }}
+                                    </a>
+                                {% else %}
+                                    <a href="{% url "news:get_news" new.id%}" class="list-group-item">
+                                        {{ new.news_title }}
+                                    </a>
+                                {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    </aside>
+        {% endif %}
+		</div>
+
+	</div>
+</section>
+{% endblock %}

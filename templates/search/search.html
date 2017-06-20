@@ -1,0 +1,36 @@
+{% extends 'news/news_over.html' %}
+{% block actcle_an %}
+    <article class="post clearfix">
+    <h3>Поиск "{{ query }}"</h3>
+    {% if news %}
+                {% for new in news %}
+					<a href="{% url "news:get_news" new.id %}" class="thumb pull-left">
+						<img class="img-thumbnail" src="{{ new.news_image.url }}" style="margin: 10px;">
+						<h2 class="post-title">
+						<br><br>
+							<a href="{%url "news:get_news" new.id %}">{{ new.news_title }}</a>
+						</h2>
+						<p>
+                            <span class="post-fecha"> {{ new.news_date_create|date:"d-N Y-год"}} </span>
+                            <span class="post-autor">
+                                <a href="#">{{ new.news_author }}</a>
+                            </span>
+                        </p>
+					</a><br>
+					<p class="post-content text-justify" style="padding: 20px;">
+						{{ new.news_anons }}
+					</p>
+					<div class="contenedor-botones">
+						<a href="#" class=" btn btn-warning"><span class="badge">14</span>Жакты</a>
+						<a href="#"></a>
+						<a href="#" class=" btn btn-info">Коментарий<span class="badge">20</span></a>
+						<a href="#"></a>
+						<a href="#" class=" btn btn-primary">Болушу<span fa ></span></a>
+					</div>
+                {% endfor %}
+    {% else %}
+        <h4 style="text-align: center">Не найдено</h4>
+    {% endif %}
+				</article>
+
+{% endblock actcle_an %}

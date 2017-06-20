@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+     Сайт
+{% endblock %}
+{% block corousel %}
+{% endblock %}
+{% block carousel_slave %}
+{% endblock %}
+{% block article %}
+    {% block actcle_an %}
+				<article class="post clearfix">
+                {% for new in news %}
+					<a href="{% url "news:get_news" new.id %}" class="thumb pull-left">
+						<img class="img-thumbnail" src="{{ new.news_image.url }}" style="margin: 10px;">
+						<h2 class="post-title">
+						<br><br>
+							<a href="{%url "news:get_news" new.id %}">{{ new.news_title }}</a>
+						</h2>
+						<p>
+                            <span class="post-fecha"> {{ new.news_date_create|date:"d-N Y-год"}} </span>
+                            <span class="post-autor">
+                                <a href="#">{{ new.news_author }}</a>
+                            </span>
+                        </p>
+					</a><br>
+					<p class="post-content text-justify" style="padding: 20px;">
+						{{ new.news_anons }}
+					</p>
+					<div class="contenedor-botones">
+						<a href="#" class=" btn btn-warning"><span class="badge">14</span>Жакты</a>
+						<a href="#"></a>
+						<a href="#" class=" btn btn-info">Коментарий<span class="badge">20</span></a>
+						<a href="#"></a>
+						<a href="#" class=" btn btn-primary">Болушу<span fa ></span></a>
+					</div>
+                {% endfor %}
+				</article>
+                {% endblock actcle_an %}
+
+
+{% endblock article %}
+{% block paggin %}
+				<nav>
+					<div class="center-block">
+						<ul class="pagination">
+                            {% if news.has_previous %}
+							<li ><a href="/page/{{ news.previous_page_number }}">&laquo;
+                                <span class="sr-only">Мурунку</span></a>
+                            </li>
+                            {% else %}
+                                <li class="disabled"><a href="">&laquo;
+                                <span class="sr-only">Бет</span></a>
+                            </li>
+                            {% endif %}
+                        {% for page in news.paginator.page_range %}
+                            {% if page == news.number %}
+							<li class="active"><a href="/page/{{ page }}">{{ page }}</a></li>
+                            {% else %}
+							<li><a href="/page/{{ page }}">{{ page }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if news.has_next %}
+							<li><a href="/page/{{ news.next_page_number }}">&raquo; <span class="sr-only">Кийинки</span></a></li>
+                        {% else %}
+                            <li class="disabled"><a href="">&raquo;
+                                <span class="sr-only">
+                                    Кийинки
+                                </span></a></li>
+
+                        {% endif %}
+
+						</ul>
+					</div>
+				</nav>
+{% endblock paggin %}
+
+{% block category %}
+                    <aside class="col-md-3 hidden-xs hidden-sm">
+                    {% for category in categorys %}
+                        <a href="{% url "category:get_category" category.category_slug %}" ><h4>{{ category.category_title }}</h4></a>
+                        <div class="list-group">
+                            {% for new in category.get_news %}
+                                {% if new == category.get_news.first %}
+                                    <a href="{% url "news:get_news" new.id%}" class="list-group-item active">{{ category.get_news.first }}</a>
+                                {% else %}
+                                    <a href="{% url "news:get_news" new.id%}" class="list-group-item">{{ new.news_title }}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    </aside>
+                {% endblock category %}
