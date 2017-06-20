@@ -9,7 +9,7 @@ from search.search import get_query
 def index(request, page_number=1):
     category = Category.objects.all()
     news = News.objects.filter(is_public=True).order_by("-news_date_update")
-    curren_page = Paginator(news, 10)
+    curren_page = Paginator(news, 1)
     data = {
         'news': curren_page.page(page_number),
         'categorys': category,
